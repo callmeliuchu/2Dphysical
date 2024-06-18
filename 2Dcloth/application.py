@@ -1,0 +1,58 @@
+import tkinter as tk
+import random
+import time
+from vec2 import Vec2
+from circle import Circle
+
+circle = Circle(Vec2(100,100),20,10)
+circle.velocity = Vec2(100,100)
+force = Vec2(100,980)
+
+circle.add_force(force)
+
+
+class DrawingApp:
+    def __init__(self, title='Drawing App', width=500, height=500):
+        # 初始化主窗口
+        self.w = width
+        self.h = height
+        self.root = tk.Tk()
+        self.root.title(title)
+
+        # 设置画布
+        self.canvas = tk.Canvas(self.root, width=width, height=height, bg='white')
+        self.canvas.pack()
+
+        # # 在画布上绘制图形
+        # self.draw_shapes()
+        self.last_time = time.time()
+
+        # 启动自动更新
+        self.auto_update()
+
+    def draw_circle(self,x,y,radius):
+        # 随机位置绘制一个圆
+        self.canvas.create_oval(x - radius, y - radius, x + radius, y + radius, outline='red', width=2)
+
+    def auto_update(self):
+        # 清空画布
+        self.canvas.delete("all")
+        # 重新绘制图形
+        current_time = time.time()
+        dt = current_time - self.last_time
+        circle.update(dt)
+        circle.keep_inside(self.w,self.h)
+        # print(dt,circle.pos.x,circle.pos.y,circle.radius)
+        self.draw_circle(circle.pos.x,circle.pos.y,circle.radius)
+        self.last_time = current_time
+        # 每秒自动更新一次
+        self.root.after(10, self.auto_update)
+
+    def run(self):
+        # 启动程序
+        self.root.mainloop()
+
+
+if __name__ == "__main__":
+    app = DrawingApp()
+    app.run()
