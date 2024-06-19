@@ -15,9 +15,13 @@ class Circle:
     def add_force(self,force):
         self.force += force
 
-    def update(self,dt):
+    def update(self,mouse,dt):
         if self.is_pin:
             return
+        dist = Vec2.length(mouse.pos,self.pos)
+        for stick in self.sticks:
+            if stick:
+                stick.is_select = dist < 50 and (mouse.click_left or mouse.click_right)
         acc = self.force / self.mass
         # self.velocity += acc * dt
         # self.pos += self.velocity * dt
