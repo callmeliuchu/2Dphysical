@@ -8,7 +8,7 @@ from mouse import Mouse
 
 # circle = Circle(Vec2(100,100),20,10)
 # circle.velocity = Vec2(100,100)
-force = Vec2(10,1500)
+force = Vec2(10,980)
 
 #
 # circle.add_force(force)
@@ -33,7 +33,7 @@ class DrawingApp:
         self.last_time = time.time()
 
 
-        self.mouse = Mouse(Vec2(0,0))
+        self.mouse = Mouse()
 
         # 绑定鼠标左键按下事件
         self.canvas.bind("<Button-1>", self.left_mouse_press)
@@ -110,7 +110,7 @@ class DrawingApp:
         clo.keep_inside(self.w,self.h)
         self.last_time = current_time
         # 每秒自动更新一次
-        self.root.after(10, self.auto_update)
+        self.root.after(1, self.auto_update)
 
     def run(self):
         # 启动程序

@@ -16,18 +16,41 @@ class Circle:
         self.force += force
 
     def update(self,mouse,dt):
+        if mouse.pos is not None:
+            dist = Vec2.length(mouse.pos,self.pos)
+            for stick in self.sticks:
+                if stick:
+                    stick.is_select = dist < 30 and (mouse.click_left or mouse.click_right)
+
+
+            if mouse.click_left and dist < 30:
+                mp = mouse.previous_pos
+                mcurrent = mouse.pos
+                diff = mcurrent - mp
+                elastic = 10
+                if diff.x > elastic:
+                    diff.x = elastic
+                if diff.x < -elastic:
+                    diff.x = -elastic
+                if diff.y > elastic:
+                    diff.y = elastic
+                if diff.y < -elastic:
+                    diff.y = -elastic
+                print('diff',diff.x,diff.y)
+                previous = self.pos - diff
+            else:
+                previous = self.pos
+        else:
+            previous = self.pos
+
         if self.is_pin:
+            self.pos = self.previous
             return
-        dist = Vec2.length(mouse.pos,self.pos)
-        for stick in self.sticks:
-            if stick:
-                stick.is_select = dist < 50 and (mouse.click_left or mouse.click_right)
+
         acc = self.force / self.mass
-        # self.velocity += acc * dt
-        # self.pos += self.velocity * dt
-        previous = self.pos
-        self.pos = self.pos * 2 - self.previous + acc * dt * dt
+        self.pos = self.pos + (self.pos - self.previous) * 0.99 + acc * 0.99* dt * dt
         self.previous = previous
+
 
 
     def keep_inside(self,w,h):
