@@ -12,7 +12,7 @@ force = Vec2(100,980)
 #
 # circle.add_force(force)
 
-clo = Cloth()
+clo = Cloth(40,30)
 clo.add_force(force)
 
 class DrawingApp:

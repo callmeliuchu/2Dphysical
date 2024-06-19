@@ -9,11 +9,14 @@ class Circle:
         self.velocity = Vec2(0,0)
         self.force = Vec2(0,0)
         self.mass = mass
+        self.is_pin = False
 
     def add_force(self,force):
         self.force += force
 
     def update(self,dt):
+        if self.is_pin:
+            return
         acc = self.force / self.mass
         # self.velocity += acc * dt
         # self.pos += self.velocity * dt
