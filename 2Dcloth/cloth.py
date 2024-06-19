@@ -31,7 +31,7 @@ class Stick:
 
 class Cloth:
 
-    def __init__(self,w,h,space=10):
+    def __init__(self,x_,y_,w,h,space=10):
         # c1 = Circle(Vec2(100, 100), 5, 10)
         # c2 = Circle(Vec2(150, 100), 5, 10)
         # c3 = Circle(Vec2(100, 150), 5, 10)
@@ -49,12 +49,12 @@ class Cloth:
 
         for y in range(h):
             for x in range(w):
-                circle = Circle(Vec2(x*space,y*space),1,10)
+                circle = Circle(Vec2(x_+x*space,y_+y*space),1,10)
                 self.circles.append(circle)
                 if x != 0:
                     self.sticks.append(Stick(self.circles[-1],self.circles[-2]))
                 if y != 0:
-                    current = y * w + x - 1
+                    current = y * w + x
                     last = current - w
                     self.sticks.append(Stick(self.circles[current],self.circles[last]))
                 if y == 0 and x % 2 == 0:

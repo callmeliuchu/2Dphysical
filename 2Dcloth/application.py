@@ -7,12 +7,12 @@ from cloth import Cloth
 
 # circle = Circle(Vec2(100,100),20,10)
 # circle.velocity = Vec2(100,100)
-force = Vec2(100,980)
+force = Vec2(10,1500)
 
 #
 # circle.add_force(force)
 
-clo = Cloth(40,30)
+clo = Cloth(50,100,41,20)
 clo.add_force(force)
 
 class DrawingApp:
@@ -38,6 +38,9 @@ class DrawingApp:
         # 随机位置绘制一个圆
         self.canvas.create_oval(x - radius, y - radius, x + radius, y + radius, outline='red', width=2)
 
+    def draw_line(self,x0,y0,x1,y1):
+        self.canvas.create_line(x0,y0,x1,y1)
+
     def auto_update(self):
         # 清空画布
         self.canvas.delete("all")
@@ -51,6 +54,9 @@ class DrawingApp:
         # print(dt,circle.pos.x,circle.pos.y,circle.radius)
         for circle in clo.circles:
             self.draw_circle(circle.pos.x,circle.pos.y,circle.radius)
+
+        for stick in clo.sticks:
+            self.draw_line(stick.c1.pos.x,stick.c1.pos.y,stick.c2.pos.x,stick.c2.pos.y)
 
         clo.keep_inside(self.w,self.h)
         self.last_time = current_time
