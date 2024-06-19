@@ -27,7 +27,7 @@ class Circle:
                 mp = mouse.previous_pos
                 mcurrent = mouse.pos
                 diff = mcurrent - mp
-                elastic = 10
+                elastic = 2
                 if diff.x > elastic:
                     diff.x = elastic
                 if diff.x < -elastic:

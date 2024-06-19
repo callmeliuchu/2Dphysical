@@ -8,16 +8,16 @@ from mouse import Mouse
 
 # circle = Circle(Vec2(100,100),20,10)
 # circle.velocity = Vec2(100,100)
-force = Vec2(10,980)
+force = Vec2(0,980)
 
 #
 # circle.add_force(force)
 
-clo = Cloth(50,100,41,20)
+clo = Cloth(0,0,41,20)
 clo.add_force(force)
 
 class DrawingApp:
-    def __init__(self, title='Drawing App', width=500, height=500):
+    def __init__(self, title='Drawing App', width=1200, height=3200):
         # 初始化主窗口
         self.w = width
         self.h = height
@@ -93,6 +93,8 @@ class DrawingApp:
         current_time = time.time()
         dt = current_time - self.last_time
 
+
+
         clo.update(self.mouse,dt)
         # circle.update(dt)
         # circle.keep_inside(self.w,self.h)
@@ -110,7 +112,7 @@ class DrawingApp:
         clo.keep_inside(self.w,self.h)
         self.last_time = current_time
         # 每秒自动更新一次
-        self.root.after(1, self.auto_update)
+        self.root.after(10, self.auto_update)
 
     def run(self):
         # 启动程序
