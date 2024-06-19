@@ -3,13 +3,17 @@ import random
 import time
 from vec2 import Vec2
 from circle import Circle
+from cloth import Cloth
 
-circle = Circle(Vec2(100,100),20,10)
-circle.velocity = Vec2(100,100)
+# circle = Circle(Vec2(100,100),20,10)
+# circle.velocity = Vec2(100,100)
 force = Vec2(100,980)
 
-circle.add_force(force)
+#
+# circle.add_force(force)
 
+clo = Cloth()
+clo.add_force(force)
 
 class DrawingApp:
     def __init__(self, title='Drawing App', width=500, height=500):
@@ -40,10 +44,15 @@ class DrawingApp:
         # 重新绘制图形
         current_time = time.time()
         dt = current_time - self.last_time
-        circle.update(dt)
-        circle.keep_inside(self.w,self.h)
+
+        clo.update(dt)
+        # circle.update(dt)
+        # circle.keep_inside(self.w,self.h)
         # print(dt,circle.pos.x,circle.pos.y,circle.radius)
-        self.draw_circle(circle.pos.x,circle.pos.y,circle.radius)
+        for circle in clo.circles:
+            self.draw_circle(circle.pos.x,circle.pos.y,circle.radius)
+
+        clo.keep_inside(self.w,self.h)
         self.last_time = current_time
         # 每秒自动更新一次
         self.root.after(10, self.auto_update)

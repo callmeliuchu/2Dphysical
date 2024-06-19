@@ -4,6 +4,7 @@ class Circle:
 
     def __init__(self,pos,radius,mass):
         self.pos = pos
+        self.previous = pos
         self.radius = radius
         self.velocity = Vec2(0,0)
         self.force = Vec2(0,0)
@@ -14,8 +15,12 @@ class Circle:
 
     def update(self,dt):
         acc = self.force / self.mass
-        self.velocity += acc * dt
-        self.pos += self.velocity * dt
+        # self.velocity += acc * dt
+        # self.pos += self.velocity * dt
+        previous = self.pos
+        self.pos = self.pos * 2 - self.previous + acc * dt * dt
+        self.previous = previous
+
 
     def keep_inside(self,w,h):
         if self.pos.x < self.radius:

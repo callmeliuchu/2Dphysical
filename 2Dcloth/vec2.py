@@ -31,3 +31,7 @@ class Vec2:
     @classmethod
     def dot(cls,v1,v2):
         return v1.x * v2.x + v1.y * v2.y
+
+    @classmethod
+    def length(cls,v1,v2):
+        return (cls.dot((v1 - v2),(v1-v2)))**0.5
