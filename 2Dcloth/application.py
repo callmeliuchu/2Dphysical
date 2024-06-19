@@ -34,6 +34,20 @@ class DrawingApp:
         # 启动自动更新
         self.auto_update()
 
+        # 绑定鼠标点击事件
+        self.canvas.bind("<Button-1>", self.mouse_click)
+
+        # 绑定鼠标移动事件（按下左键的情况下）
+        self.canvas.bind("<B1-Motion>", self.mouse_drag)
+
+    def mouse_click(self, event):
+        # 鼠标点击事件处理函数
+        print("Clicked at:", event.x, event.y)
+
+    def mouse_drag(self, event):
+        # 鼠标移动事件处理函数
+        print("Dragging at:", event.x, event.y)
+
     def draw_circle(self,x,y,radius):
         # 随机位置绘制一个圆
         self.canvas.create_oval(x - radius, y - radius, x + radius, y + radius, outline='red', width=2)

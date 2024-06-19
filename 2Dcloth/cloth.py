@@ -52,11 +52,15 @@ class Cloth:
                 circle = Circle(Vec2(x_+x*space,y_+y*space),1,10)
                 self.circles.append(circle)
                 if x != 0:
-                    self.sticks.append(Stick(self.circles[-1],self.circles[-2]))
+                    stick = Stick(self.circles[-1],self.circles[-2])
+                    self.sticks.append(stick)
+                    circle.sticks[0] = stick
                 if y != 0:
                     current = y * w + x
                     last = current - w
-                    self.sticks.append(Stick(self.circles[current],self.circles[last]))
+                    stick = Stick(self.circles[current],self.circles[last])
+                    self.sticks.append(stick)
+                    circle.sticks[1] = stick
                 if y == 0 and x % 2 == 0:
                     circle.is_pin = True
 

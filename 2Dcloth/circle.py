@@ -10,6 +10,7 @@ class Circle:
         self.force = Vec2(0,0)
         self.mass = mass
         self.is_pin = False
+        self.sticks = [None,None]
 
     def add_force(self,force):
         self.force += force
