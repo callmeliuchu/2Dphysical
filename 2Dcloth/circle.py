@@ -39,6 +39,11 @@ class Circle:
                 previous = self.pos - diff
             else:
                 previous = self.pos
+
+            if mouse.click_right and dist < 30:
+                for stick in self.sticks:
+                    if stick:
+                        stick.is_active = False
         else:
             previous = self.pos
 

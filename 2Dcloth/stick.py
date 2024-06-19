@@ -7,9 +7,12 @@ class Stick:
         self.c1 = c1
         self.c2 = c2
         self.is_select = False
+        self.is_active = True
         self.length = Vec2.length(self.c1.pos,self.c2.pos)
 
     def keep_length(self):
+        if not self.is_active:
+            return
         if not self.c1.is_pin and not self.c2.is_pin:
             current = Vec2.length(self.c1.pos,self.c2.pos)
             ratio = (current - self.length) / current * 0.5

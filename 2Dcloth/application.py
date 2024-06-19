@@ -103,11 +103,12 @@ class DrawingApp:
             self.draw_circle(circle.pos.x,circle.pos.y,circle.radius)
 
         for stick in clo.sticks:
-            if stick.is_select:
-                color = 'red'
-            else:
-                color = 'black'
-            self.draw_line(stick.c1.pos.x,stick.c1.pos.y,stick.c2.pos.x,stick.c2.pos.y,color)
+            if stick.is_active:
+                if stick.is_select:
+                    color = 'red'
+                else:
+                    color = 'black'
+                self.draw_line(stick.c1.pos.x,stick.c1.pos.y,stick.c2.pos.x,stick.c2.pos.y,color)
 
         clo.keep_inside(self.w,self.h)
         self.last_time = current_time
