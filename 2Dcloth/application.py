@@ -17,7 +17,7 @@ clo = Cloth(0,0,41,20)
 clo.add_force(force)
 
 class DrawingApp:
-    def __init__(self, title='Drawing App', width=1200, height=3200):
+    def __init__(self, title='Drawing App', width=1200, height=500):
         # 初始化主窗口
         self.w = width
         self.h = height

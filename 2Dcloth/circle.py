@@ -36,7 +36,6 @@ class Circle:
                     diff.y = elastic
                 if diff.y < -elastic:
                     diff.y = -elastic
-                print('diff',diff.x,diff.y)
                 previous = self.pos - diff
             else:
                 previous = self.pos
