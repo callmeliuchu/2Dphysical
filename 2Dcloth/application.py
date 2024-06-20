@@ -6,7 +6,7 @@ from mouse import Mouse
 
 # circle = Circle(Vec2(100,100),20,10)
 # circle.velocity = Vec2(100,100)
-force = Vec2(0,2000)
+force = Vec2(0,1000)
 
 #
 # circle.add_force(force)
