@@ -5,7 +5,7 @@ from stick import Stick
 
 class Cloth:
 
-    def __init__(self,x_,y_,w,h,space=10):
+    def __init__(self,x_,y_,w,h,space=20):
         # c1 = Circle(Vec2(100, 100), 5, 10)
         # c2 = Circle(Vec2(150, 100), 5, 10)
         # c3 = Circle(Vec2(100, 150), 5, 10)
