@@ -1,8 +1,6 @@
 import tkinter as tk
-import random
 import time
 from vec2 import Vec2
-from circle import Circle
 from cloth import Cloth
 from mouse import Mouse
 
