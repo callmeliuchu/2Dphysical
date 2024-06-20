@@ -59,17 +59,21 @@ class Circle:
 
     def keep_inside(self,w,h):
         if self.pos.x < self.radius:
+            diff = self.pos - self.previous
             self.pos.x = self.radius
-            self.velocity.x *= -1
+            self.previous = self.pos + diff
 
         if self.pos.y < self.radius:
+            diff = self.pos - self.previous
             self.pos.y = self.radius
-            self.velocity.y *= -1
+            self.previous = self.pos + diff
 
         if self.pos.x >= w - self.radius:
+            diff = self.pos - self.previous
             self.pos.x = w - self.radius
-            self.velocity.x *= -1
+            self.previous = self.pos + diff
 
         if self.pos.y >= h - self.radius:
+            diff = self.pos - self.previous
             self.pos.y = h - self.radius
-            self.velocity.y *= -1
+            self.previous = self.pos + diff
