@@ -20,14 +20,14 @@ class Circle:
             dist = Vec2.length(mouse.pos,self.pos)
             for stick in self.sticks:
                 if stick:
-                    stick.is_select = dist < 30 and (mouse.click_left or mouse.click_right)
+                    stick.is_select = dist < 50 and (mouse.click_left or mouse.click_right)
 
 
-            if mouse.click_left and dist < 30:
+            if mouse.click_left and dist < 50:
                 mp = mouse.previous_pos
                 mcurrent = mouse.pos
                 diff = mcurrent - mp
-                elastic = 2
+                elastic = 8
                 if diff.x > elastic:
                     diff.x = elastic
                 if diff.x < -elastic:
