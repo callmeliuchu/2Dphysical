@@ -1,7 +1,7 @@
 import tkinter as tk
 import time
 from vec2 import Vec2
-from cloth_world import World
+from collision_world import World
 from mouse import Mouse
 
 a_world = World()

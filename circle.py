@@ -61,19 +61,23 @@ class Circle:
         if self.pos.x < self.radius:
             diff = self.pos - self.previous
             self.pos.x = self.radius
-            self.previous = self.pos + diff*2
+            diff.x = -diff.x
+            self.previous = self.pos - diff
 
         if self.pos.y < self.radius:
             diff = self.pos - self.previous
             self.pos.y = self.radius
-            self.previous = self.pos + diff*2
+            diff.y = -diff.y
+            self.previous = self.pos - diff
 
         if self.pos.x >= w - self.radius:
             diff = self.pos - self.previous
             self.pos.x = w - self.radius
-            self.previous = self.pos + diff*2
+            diff.x = -diff.x
+            self.previous = self.pos - diff
 
         if self.pos.y >= h - self.radius:
             diff = self.pos - self.previous
             self.pos.y = h - self.radius
-            self.previous = self.pos + diff*2
+            diff.y = -diff.y
+            self.previous = self.pos - diff
