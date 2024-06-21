@@ -1,12 +1,10 @@
 import tkinter as tk
 import time
 from vec2 import Vec2
-from world import World
+from cloth_world import World
 from mouse import Mouse
 
-
 a_world = World()
-
 
 class DrawingApp:
     def __init__(self, title='Drawing App', width=1200, height=1000):
