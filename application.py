@@ -1,18 +1,12 @@
 import tkinter as tk
 import time
 from vec2 import Vec2
-from cloth import Cloth
+from world import World
 from mouse import Mouse
 
-# circle = Circle(Vec2(100,100),20,10)
-# circle.velocity = Vec2(100,100)
-force = Vec2(0,1000)
 
-#
-# circle.add_force(force)
+a_world = World()
 
-clo = Cloth(0,0,41,20)
-clo.add_force(force)
 
 class DrawingApp:
     def __init__(self, title='Drawing App', width=1200, height=1000):
@@ -91,24 +85,8 @@ class DrawingApp:
         current_time = time.time()
         dt = current_time - self.last_time
 
+        a_world.update(self.mouse,dt,self)
 
-
-        clo.update(self.mouse,dt)
-        # circle.update(dt)
-        # circle.keep_inside(self.w,self.h)
-        # print(dt,circle.pos.x,circle.pos.y,circle.radius)
-        for circle in clo.circles:
-            self.draw_circle(circle.pos.x,circle.pos.y,circle.radius)
-
-        for stick in clo.sticks:
-            if stick.is_active:
-                if stick.is_select:
-                    color = 'red'
-                else:
-                    color = 'black'
-                self.draw_line(stick.c1.pos.x,stick.c1.pos.y,stick.c2.pos.x,stick.c2.pos.y,color)
-
-        clo.keep_inside(self.w,self.h)
         self.last_time = current_time
         # 每秒自动更新一次
         self.root.after(10, self.auto_update)
