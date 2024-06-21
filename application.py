@@ -69,9 +69,9 @@ class DrawingApp:
         print("Dragging at:", event.x, event.y)
         self.mouse.set_pos(Vec2(event.x, event.y))
 
-    def draw_circle(self,x,y,radius):
+    def draw_circle(self,x,y,radius,color='black'):
         # 随机位置绘制一个圆
-        self.canvas.create_oval(x - radius, y - radius, x + radius, y + radius, outline='red', width=2)
+        self.canvas.create_oval(x - radius, y - radius, x + radius, y + radius, outline=color, width=2)
 
     def draw_line(self,x0,y0,x1,y1,color='black'):
         self.canvas.create_line(x0,y0,x1,y1,fill=color)
