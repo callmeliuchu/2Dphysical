@@ -76,6 +76,8 @@ class Circle:
             diff.x = -diff.x
             self.previous = self.pos - diff
 
+
+
         if self.pos.y >= h - self.radius:
             diff = self.pos - self.previous
             self.pos.y = h - self.radius
