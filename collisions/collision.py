@@ -13,7 +13,6 @@ class Collision:
 
 
     def circle_circle(self,a,b):
-        print('xx')
         ab_length = (a.pos-b.pos).mag()
         ab = a.radius + b.radius
         return ab > ab_length
