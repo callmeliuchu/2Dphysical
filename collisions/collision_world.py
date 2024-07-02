@@ -1,5 +1,5 @@
 from vec2 import Vec2
-from cloths.cloth import Circle
+from circle import Circle
 from collisions.collision import Collision
 
 class World:
@@ -18,7 +18,7 @@ class World:
     def update(self,mouse,dt,render):
         for o in self.objs:
             o.update(mouse,dt)
-            render.draw_circle(o.pos.x, o.pos.y, o.radius)
+            render.draw_circle(o.pos.x, o.pos.y, o.radius,color='green')
             o.keep_inside(render.w,render.h)
 
         contacts = []
