@@ -1,6 +1,6 @@
 from vec2 import Vec2
 from cloths.cloth import Circle
-from collision import Collision
+from collisions.collision import Collision
 
 class World:
 

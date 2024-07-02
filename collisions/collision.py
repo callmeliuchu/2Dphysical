@@ -1,4 +1,4 @@
-from cloths.circle import Circle
+from circle import Circle
 
 
 class Collision:
